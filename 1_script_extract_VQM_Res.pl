@@ -1,9 +1,13 @@
-my @Video_arr = ("Sport","New2");
-my @QP_arr = (24,26);
-my @Res_arr= (144,240,360,480,720);
-my $No_video = 2;
-my $No_qp = 2;
-my $No_res = 5;
+my @Video_arr 	= ("Sport","News");
+my @QP_arr 		= (24,26);
+my @Res_arr		= (144,240,360,480,720);
+my $No_video 	= 2;
+my $No_qp 		= 2;
+my $No_res 		= 5;
+my $T_e			= 1;
+my $R_file = "VQM_Res.txt";
+open RESULT_FILE, ">$R_file"; 
+printf RESULT_FILE "Video\tQP\tResolution\tAverageVQM\n";
 
 for (my $cnt_v = 0; $cnt_v < $No_video; $cnt_v++) {
 	my $Name = $Video_arr[$cnt_v];
@@ -24,6 +28,26 @@ for (my $cnt_v = 0; $cnt_v < $No_video; $cnt_v++) {
 				print "$cmd \n";
 				system $cmd;
 			}
+
+
+
+			# Extract the average of VQM
+			my $VQM_file 	= "${Name}_QP${QP}_Res${Res}_vqm_${T_e}s.csv";
+			my $No_Fr 		= 0;
+			my $sum 		= 0;
+			#printf $VQM_file;
+			open VQM_F,"$VQM_file";
+			while (<VQM_F>){
+				chomp;
+				my $line = $_;
+				#printf $line;
+				if($line =~ /\d+;(\d+.\d+)/){
+					$No_Fr ++;
+					$sum = $sum + $1;
+				}
+			}
+			my $AVQM = $sum/$No_Fr;
+			printf RESULT_FILE "${Name}\t${QP}\t${Res}\t$AVQM\n";
 		}
 	}
 }
