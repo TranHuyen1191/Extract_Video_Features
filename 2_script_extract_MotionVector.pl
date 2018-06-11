@@ -4,12 +4,10 @@ sub average2D {
 	my $counter = 0;
 	foreach my $E1(@_) {  
   		foreach my $E2 (@$E1)  { 
-  			# printf "# $E2 $counter";
   			$sum += $E2;
   			$counter ++;
   		}	
   	}
-  	# printf "############# $sum $counter\n";
 	return $sum/$counter;
 } 
 
@@ -18,23 +16,11 @@ sub average1D {
 	my $sum = 0;
 	my $counter = 0;
 	foreach my $E1(@_) {  
-  		if  ($E1 != 0){
-	  		#printf "# $E1 $counter \n";
-  		}
   		$sum += $E1; 
   		$counter ++;
   	}
-  	#printf "############# $sum $counter\n";
 	return $sum/$counter;
 } 
-@foo = (
-         [1, 3,5],
-         [2, 4,5],
-       );
-#printf(average2D(@foo));
-
-@foo = (1,2,3);
-#printf(average1D(@foo));
 
 my $W_Video   = 1280;
 my $H_Video   = 720;
