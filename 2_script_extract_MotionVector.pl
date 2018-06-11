@@ -59,12 +59,7 @@ for (my $cnt_v = 0; $cnt_v < $No_video; $cnt_v++) {
 			$dstx = $3; 
 			$dsty = $4;
 			$MVA[$MB_id]  = sqrt((($dstx - $srcx)/${Nw_MB})**2 + (($dsty - $srcy)/${Ny_MB})**2);
-			#$MVA[$MB_id]  = sqrt((($dstx - $srcx))**2 + (($dsty - $srcy))**2);
-			#printf "$1 $2 $3 $4 $MVA[$MB_id] $MB_id \n";
 			$MB_id ++;
-		}
-		else{
-			#printf("##### $line \n");
 		}
 	}
 	close ENC;
