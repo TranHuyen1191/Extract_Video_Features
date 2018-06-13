@@ -1,3 +1,7 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%% This function uses the source code of Peter Kovesi in the link: %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% https://github.com/carandraug/PeterKovesiImage/blob/master/PhaseCongruency/gaborconvolve.m %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % GABORCONVOLVE - function for convolving image with log-Gabor filters
 %
 % Usage: [EO, BP] = F_gaborconvolve(im,  nscale, norient, minWaveLength, mult, ...
