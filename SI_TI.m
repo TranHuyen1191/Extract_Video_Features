@@ -1,23 +1,25 @@
-clear;
-No_fr = 900;
-% H = 1920;
-% W = 3840;
-%vname = 'counterstrikeVR1_40s_300fr_3840x1920.yuv';
-H = 544;
-W = 1280;
-vname = 'sintel_10fr_1280x544_30s_from0.yuv';
-[Y, U, V, read_fr_id, lost_fr_count] = loadFileYuv(vname, W, H, No_fr, 1, No_fr , 0);
-for i=1:No_fr
+clear
+clc
+close all
+%%%%%%%%%%%%%%%% PARAMETERS OF VIDEOS %%%%%%%%%%%%%%%
+No_frame = 100;
+yuvname = sprintf('Cook.yuv');
+Height = 1920;
+Width = 3840;
+
+%%%%%%%%%%%%%%%% Source code %%%%%%%%%%%%%%%
+[Y, U, V, read_fr_id, lost_fr_count] = loadFileYuv(yuvname, Width, Height, No_frame, 1, No_frame , 0);
+for i=1:No_frame
     % compute sobel filter
     h = fspecial('sobel');
     I = Y(:,:,i);
     s(:,:,i) = imfilter(I, h);
-    s_1D(:,i) = reshape(s(:,:,i), 1, W * H);
+    s_1D(:,i) = reshape(s(:,:,i), 1, Width * Height);
     % compute standard deviation
     std_(i) = std(s_1D(:,i), 1);
-    if i < No_fr 
+    if i < No_frame 
         M(:,:,i) = Y(:,:,i+1) - Y(:,:,i);
-        t_1D(:,i) = reshape(M(:,:,i), 1, W * H);
+        t_1D(:,i) = reshape(M(:,:,i), 1, Width * Height);
         std_ti(i) = std(t_1D(:,i), 1);
     end
 end
